@@ -1,4 +1,4 @@
-# Assignment 1 - CSCI6609
+# Lab Assignments - CSCI6609
 Helia Homami - B00975927
 
 ## Repository
@@ -25,6 +25,7 @@ White Spaceship (Cutter)
 * 4 Dead Trees (2 Different Rampikes)
 
 ## Citations and References
+### Assignment 1
 * [Space sky](https://assetstore.unity.com/packages/3d/environments/landscapes/lunar-landscape-3d-132614)
 * [Space assets](https://assetstore.unity.com/packages/3d/vehicles/space/voxel-space-ships-109876)
 * [Setup VSCode for unity](https://code.visualstudio.com/docs/other/unity)
@@ -46,3 +47,11 @@ White Spaceship (Cutter)
 * [Add script component to game object](https://sharpcoderblog.com/blog/unity-3d-how-to-attach-a-script-or-a-component-to-a-game-object)
 * [Use steps counter](https://www.reddit.com/r/Unity3D/comments/wjrg5q/how_to_use_the_pedometerstepcounter_sensor/)
 * [Exact post for steps counter](https://www.reddit.com/r/Unity3D/comments/wjrg5q/how_to_use_the_pedometerstepcounter_sensor/jcesp2h/?utm_source=share&utm_medium=mweb3x&utm_name=mweb3xcss&utm_term=1&utm_content=share_button)
+
+### Assignment 2
+* [Menu Manager](https://www.youtube.com/watch?v=pcyiub1hz20)
+* [FixedUpdate](https://docs.unity3d.com/ScriptReference/MonoBehaviour.FixedUpdate.html)
+* [Finding an object by its type](https://gamedev.stackexchange.com/questions/132569/how-do-i-find-an-object-by-type-and-name-in-unity-using-c)
+* [Match canvas to main camera](https://stackoverflow.com/questions/33086715/match-canvas-with-main-camera-unity)
+* [Singleton](https://en.wikipedia.org/wiki/Singleton_pattern)
+* []()
