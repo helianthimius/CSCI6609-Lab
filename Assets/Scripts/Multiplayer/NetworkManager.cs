@@ -45,6 +45,7 @@ public class NetworkManager : MonoBehaviour
         Client = new Client();
         Client.Connect($"{ip}:{port}");
     }
+
     // https://docs.unity3d.com/ScriptReference/MonoBehaviour.FixedUpdate.html
     // This function is called by fix intervals, so arriving messages can be handled here
     private void FixedUpdate()
