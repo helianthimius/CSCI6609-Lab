@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Android;
 using UnityEngine.Android;
+using RiptideNetworking;
+using System;
 
 
 public class SensorComponent : MonoBehaviour
@@ -32,7 +34,7 @@ public class SensorComponent : MonoBehaviour
     {
         // Generates random color in RGBa with random values
         // https://docs.unity3d.com/ScriptReference/Random-value.html
-        Color randomColor = new Color(Random.value, Random.value, Random.value);
+        Color randomColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
 
         // It "finds" the exact object (child of current object), and change its color by using its renderer
         // https://discussions.unity.com/t/renderer-material-color-not-changing-color-of-prefab/246469
@@ -59,6 +61,14 @@ public class SensorComponent : MonoBehaviour
         AndroidStepCounter.current.MakeCurrent();
     }
 
+    // Creates the message using value and type then sends it to server
+    void SendValue(NetworkManager.MessageType messageType, string value)
+    {
+        Message message = Message.Create(MessageSendMode.unreliable, (ushort)messageType);
+        message.AddString(value);
+        NetworkManager.Singleton.Client.Send(message);
+    }
+
     void Update()
     {
         // TOUCH
@@ -78,6 +88,8 @@ public class SensorComponent : MonoBehaviour
             }
             else if (touch.phase == UnityEngine.TouchPhase.Moved)
             {
+                SendValue(NetworkManager.MessageType.TouchValue, touch.position.ToString());
+
                 var delta = (touch.position - touch.rawPosition).y;
                 // https://docs.unity3d.com/ScriptReference/Transform-position.html
                 // The value of 0.05 is used to decrease the speed of spaceship movement. When changing the touch position,
@@ -103,10 +115,12 @@ public class SensorComponent : MonoBehaviour
         // https://docs.unity3d.com/ScriptReference/Transform-eulerAngles.html
         // https://docs.unity3d.com/ScriptReference/Input-gyro.html
         transform.eulerAngles = new Vector3(0, -Input.gyro.attitude.eulerAngles.z, 0);
+        SendValue(NetworkManager.MessageType.GyroscopeValue, Input.gyro.attitude.ToString());
 
         //ACCELERATOR 
         // Reads the device acceleration
         var accelerometerReading = Input.acceleration;
+        SendValue(NetworkManager.MessageType.AcceleratorValue, accelerometerReading.ToString());
 
         // Calculates delta acceleration 
         Vector3 deltaAcceleration = accelerometerReading - lastAcceleration;
@@ -131,6 +145,7 @@ public class SensorComponent : MonoBehaviour
 
         // STEP COUNTER
         var stepCountRead = AndroidStepCounter.current.stepCounter.ReadValue();
+        SendValue(NetworkManager.MessageType.PedometerValue, stepCountRead.ToString());
         // Checks if previous measured steps count has increased or not
         if (lastStepCount < stepCountRead)
         {
