@@ -2,7 +2,8 @@
 Helia Homami - B00975927
 
 ## Repository
-[GitHub](https://github.com/helianthimius/CSCI6609-Lab)
+* [Client GitHub](https://github.com/helianthimius/CSCI6609-Lab)
+* [Server GitHub](https://github.com/helianthimius/CSCI6609-3dServer)
 
 ## Project Overview
 ### Theme
@@ -23,6 +24,19 @@ White Spaceship (Cutter)
 * 2 Buildings (4 Cubes)
 * 2 Other Spaceships (Red and Green)
 * 4 Dead Trees (2 Different Rampikes)
+
+### How it works
+Client:
+* **Input Field**: Add IP Address:33417
+* **Connect Button**: Connects client to the server
+* **B1, B2, B3 Buttons**: By pressing them, their name will be shown on server screen
+* **Play Button**: Starts the game
+
+Server:
+* Shows pressed button name on the client
+* Shows client online sensors values
+
+_NOTE_: Try to add the correct IP address, and then press the "Connect" button.
 
 ## Citations and References
 ### Assignment 1
